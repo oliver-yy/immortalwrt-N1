@@ -89,7 +89,7 @@ plugins:
     args:
       concurrent: 3
       upstreams:
-        - addr: 192.168.0.1
+        - addr: 192.168.3.1
         - addr: 223.5.5.5
 
   # 转发至阿里服务器
