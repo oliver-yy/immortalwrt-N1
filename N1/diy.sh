@@ -17,6 +17,7 @@ function git_sparse_clone() {
 git clone --depth=1 https://github.com/ophub/luci-app-amlogic package/amlogic
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-ddns-go
 git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-tailscale
+git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-mosdns
 
 # 加入OpenClash核心
 chmod -R a+x $GITHUB_WORKSPACE/preset-clash-core.sh
@@ -27,6 +28,7 @@ echo "
 CONFIG_PACKAGE_luci-app-amlogic=y
 CONFIG_PACKAGE_luci-app-ddns-go=y
 CONFIG_PACKAGE_luci-app-tailscale=y
+CONFIG_PACKAGE_luci-app-mosdns=y
 " >> .config
 
 # 修改默认IP
