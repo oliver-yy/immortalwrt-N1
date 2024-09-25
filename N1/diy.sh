@@ -15,22 +15,22 @@ function git_sparse_clone() {
 
 # Add packages
 git clone --depth=1 https://github.com/ophub/luci-app-amlogic package/amlogic
-git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-lucky lucky
-git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-linkease linkease ffmpeg-remux linkmount
+git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-ddns-go
+git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-tailscale
 
 # 加入OpenClash核心
-#chmod -R a+x $GITHUB_WORKSPACE/preset-clash-core.sh
-#$GITHUB_WORKSPACE/N1/preset-clash-core.sh
+chmod -R a+x $GITHUB_WORKSPACE/preset-clash-core.sh
+$GITHUB_WORKSPACE/N1/preset-clash-core.sh
 
 echo "
 # 插件
 CONFIG_PACKAGE_luci-app-amlogic=y
-CONFIG_PACKAGE_luci-app-linkease=y
-CONFIG_PACKAGE_luci-app-lucky=y
+CONFIG_PACKAGE_luci-app-ddns-go=y
+CONFIG_PACKAGE_luci-app-tailscale=y
 " >> .config
 
 # 修改默认IP
-sed -i 's/192.168.1.1/192.168.0.2/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.3.33/g' package/base-files/files/bin/config_generate
 
 # 修改默认主题
 sed -i 's/luci-theme-design/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
