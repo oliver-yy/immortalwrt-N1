@@ -9,7 +9,8 @@
 - 添加 易有云
 - <del>添加 阿里DDNS </del>
 - <del> 添加 网络唤醒 <del>
-- 添加 lucky大吉
+- 添加 ddns-go
+- 添加 tailscale
 - 添加 微信推送
 ***
 # 致谢
