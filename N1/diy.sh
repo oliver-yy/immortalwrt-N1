@@ -15,8 +15,8 @@ function git_sparse_clone() {
 
 # Add packages
 git clone --depth=1 https://github.com/ophub/luci-app-amlogic package/amlogic
-git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-ddns-go
-git_sparse_clone master https://github.com/kiddin9/openwrt-packages luci-app-tailscale
+git_sparse_clone master https://github.com/kenzok8/openwrt-packages luci-app-ddns-go
+git clone https://github.com/asvow/luci-app-tailscale package/luci-app-tailscale
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
