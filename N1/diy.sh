@@ -19,6 +19,7 @@ git_sparse_clone master https://github.com/kenzok8/openwrt-packages luci-app-ddn
 git clone https://github.com/asvow/luci-app-tailscale package/luci-app-tailscale
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+git clone https://github.com/immortalwrt/homeproxy package/homeproxy
 
 # 加入OpenClash核心
 chmod -R a+x $GITHUB_WORKSPACE/preset-clash-core.sh
@@ -30,6 +31,7 @@ CONFIG_PACKAGE_luci-app-amlogic=y
 CONFIG_PACKAGE_luci-app-ddns-go=y
 CONFIG_PACKAGE_luci-app-tailscale=y
 CONFIG_PACKAGE_luci-app-mosdns=y
+CONFIG_PACKAGE_luci-app-homeproxy=y
 " >> .config
 
 # 修改默认IP
