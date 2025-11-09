@@ -13,7 +13,9 @@ function git_sparse_clone() {
   cd .. && rm -rf $repodir
 }
 
+# ---------------------------
 # Add packages
+# ---------------------------
 git clone --depth=1 https://github.com/ophub/luci-app-amlogic package/amlogic
 git_sparse_clone master https://github.com/kenzok8/openwrt-packages luci-app-ddns-go
 git clone https://github.com/asvow/luci-app-tailscale package/luci-app-tailscale
@@ -21,10 +23,15 @@ git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 git clone https://github.com/immortalwrt/homeproxy package/homeproxy
 
-# 加入OpenClash核心
+# ---------------------------
+# 加入 OpenClash 核心
+# ---------------------------
 chmod -R a+x $GITHUB_WORKSPACE/preset-clash-core.sh
 $GITHUB_WORKSPACE/N1/preset-clash-core.sh
 
+# ---------------------------
+# OpenWrt 配置选项
+# ---------------------------
 echo "
 # 插件
 CONFIG_PACKAGE_luci-app-amlogic=y
@@ -32,9 +39,15 @@ CONFIG_PACKAGE_luci-app-ddns-go=y
 CONFIG_PACKAGE_luci-app-tailscale=y
 CONFIG_PACKAGE_luci-app-mosdns=y
 CONFIG_PACKAGE_luci-app-homeproxy=y
+# ✅ WireGuard 相关
+CONFIG_PACKAGE_kmod-wireguard=y
 " >> .config
 
-# 修改默认IP
+# ---------------------------
+# 修改默认配置
+# ---------------------------
+
+# 修改默认 IP
 sed -i 's/192.168.1.1/192.168.3.33/g' package/base-files/files/bin/config_generate
 
 # 修改默认主题
@@ -56,4 +69,3 @@ cp -f $GITHUB_WORKSPACE/argon/icon/favicon-16x16.png feeds/luci/themes/luci-them
 cp -f $GITHUB_WORKSPACE/argon/icon/favicon-32x32.png feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/icon/favicon-32x32.png
 cp -f $GITHUB_WORKSPACE/argon/icon/favicon-96x96.png feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/icon/favicon-96x96.png
 cp -f $GITHUB_WORKSPACE/argon/icon/ms-icon-144x144.png feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/icon/ms-icon-144x144.png
-
